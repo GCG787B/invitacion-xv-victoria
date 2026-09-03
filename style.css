@@ -1294,212 +1294,375 @@ body {
 }
 
 /* =========================================
-   RECOMENDAR CANCIÓN
+   RECOMENDAR CANCIÓN - SPOTIFY
    ========================================= */
 
-.btn-cancion {
-    min-width: 220px;
-
-    height: 50px;
-
-    padding: 0 25px;
-
-    border: 1px solid #d8b06a;
-
-    border-radius: 30px;
-
-    background: #fffafa;
-
-    color: #b76584;
-
-    font-family: inherit;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 18px rgba(80,40,60,0.10);
-
-    transition: all 0.3s ease;
-}
-
-.btn-cancion:hover {
-    transform: translateY(-3px);
-
-    background: #fdf0f5;
-
-    box-shadow:
-        0 12px 25px rgba(80,40,60,0.16);
-}
-
-
-/* Ventana */
-
 .recomendar-cancion {
+
     display: none;
 
-    width: min(500px, 90%);
+    width: min(560px, 92%);
 
-    margin: 10px auto 30px;
+    margin: 15px auto 35px;
 
-    padding: 30px 35px;
+    padding: 35px 30px;
 
     background:
         radial-gradient(
             circle at 50% 0%,
             #ffffff 0%,
-            #fffafc 60%,
+            #fffafc 55%,
             #fdf1f6 100%
         );
 
     border: 1px solid #d8b06a;
 
-    border-radius: 22px;
+    border-radius: 25px;
 
     text-align: center;
 
     box-shadow:
         0 15px 35px rgba(80,40,60,0.14);
 
-    animation:
-        aparecerCancion 0.4s ease;
+    position: relative;
+
+    z-index: 20;
 }
+
 
 .recomendar-cancion.mostrar {
     display: block;
 }
 
+
+/* ICONO */
+
+.icono-musica {
+
+    font-size: 40px;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* TITULO */
+
 .recomendar-cancion h3 {
-    margin-bottom: 12px;
+
+    margin: 0 0 10px;
 
     color: #bd6688;
 
-    font-size: 28px;
+    font-size: 29px;
 
     font-weight: normal;
+
 }
 
+
+/* LINEA */
+
+.linea-musical {
+
+    width: 70px;
+
+    height: 1px;
+
+    margin: 12px auto 20px;
+
+    background: #d8b06a;
+
+}
+
+
+/* TEXTOS */
+
 .recomendar-cancion p {
-    margin-bottom: 20px;
 
     color: #795766;
 
-    line-height: 1.5;
+    font-size: 16px;
 
-    font-size: 15px;
+    line-height: 1.6;
+
+    margin: 8px auto;
+
 }
 
-.recomendar-cancion input {
+
+.recomendar-cancion .texto-musical {
+
+    color: #a87532;
+
+    font-size: 15px;
+
+    font-style: italic;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* =========================================
+   SPOTIFY
+   ========================================= */
+
+.spotify-contenedor {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.12);
+
+    background: #121212;
+
+}
+
+
+.spotify-contenedor iframe {
+
     display: block;
 
     width: 100%;
 
-    height: 50px;
-
-    margin: 12px 0;
-
-    padding: 0 20px;
-
-    border: 1px solid #d8b06a;
-
-    border-radius: 28px;
-
-    background: white;
-
-    color: #6f4b59;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    outline: none;
-}
-
-.recomendar-cancion input:focus {
-    border-color: #c87898;
-
-    box-shadow:
-        0 0 0 3px rgba(200,120,152,0.12);
-}
-
-.btn-enviar-cancion {
-    width: 100%;
-
-    height: 50px;
-
-    margin-top: 10px;
+    min-height: 352px;
 
     border: none;
 
-    border-radius: 28px;
-
-    background: #d8759a;
-
-    color: white;
-
-    font-family: inherit;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-.btn-enviar-cancion:hover {
-    transform: translateY(-2px);
-
-    background: #c9688d;
-}
-
-@keyframes aparecerCancion {
-
-    from {
-        opacity: 0;
-
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform: translateY(0);
-    }
 }
 
 
-/* Celular */
+/* NOTA */
+
+.nota-spotify {
+
+    margin-top: 18px !important;
+
+    color: #9b7180 !important;
+
+    font-size: 12px !important;
+
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
 
 @media (max-width: 600px) {
 
-    .btn-cancion {
+    .recomendar-cancion {
+
+        width: 92%;
+
+        padding: 30px 15px;
+
+        border-radius: 20px;
+
+    }
+
+    .recomendar-cancion h3 {
+
+        font-size: 25px;
+
+    }
+
+    .spotify-contenedor {
+
         width: 100%;
 
-        min-width: 0;
     }
 
-    .recomendar-cancion {
-        width: 90%;
+    .spotify-contenedor iframe {
 
-        padding: 25px 20px;
+        height: 352px;
+
+        min-height: 352px;
+
     }
+
+}
+/* =========================================
+   CUENTA REGRESIVA
+   ========================================= */
+
+.cuenta-regresiva {
+
+    width: min(650px, 90%);
+
+    margin: 25px auto 20px;
+
+    padding: 25px 20px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.85),
+            rgba(253,241,246,0.95)
+        );
+
+    border-top: 1px solid #d8b06a;
+    border-bottom: 1px solid #d8b06a;
+
 }
 
-.recomendar-cancion {
-    display: none;
+
+.titulo-cuenta {
+
+    margin: 0 0 18px;
+
+    color: #b86b87;
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
 }
 
-.recomendar-cancion.mostrar {
-    display: block;
+
+/* CONTENEDOR */
+
+.contador {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
 }
 
-.recomendar-cancion {
-    display: none;
+
+/* CADA UNIDAD */
+
+.tiempo {
+
+    min-width: 75px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
 }
 
-.recomendar-cancion.mostrar {
-    display: block;
+
+.tiempo span {
+
+    color: #b86b87;
+
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    line-height: 1;
+
+}
+
+
+.tiempo small {
+
+    margin-top: 8px;
+
+    color: #9b7180;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+/* SEPARADORES */
+
+.separador {
+
+    color: #d8b06a;
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* MENSAJE */
+
+.mensaje-cuenta {
+
+    margin: 20px 0 0;
+
+    color: #a87532;
+
+    font-size: 14px;
+
+    font-style: italic;
+
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .cuenta-regresiva {
+
+        width: 92%;
+
+        padding: 22px 8px;
+
+    }
+
+    .contador {
+
+        gap: 5px;
+
+    }
+
+    .tiempo {
+
+        min-width: 58px;
+
+    }
+
+    .tiempo span {
+
+        font-size: 24px;
+
+    }
+
+    .tiempo small {
+
+        font-size: 7px;
+
+        letter-spacing: 1px;
+
+    }
+
+    .separador {
+
+        font-size: 19px;
+
+        margin-bottom: 12px;
+
+    }
+
 }

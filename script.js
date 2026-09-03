@@ -190,9 +190,12 @@ setInterval(function() {
    RECOMENDAR CANCIÓN
    ========================================= */
 
-const botonCancion = document.querySelector(".btn-cancion");
-const recomendarCancion = document.querySelector(".recomendar-cancion");
-const botonEnviarCancion = document.querySelector(".btn-enviar-cancion");
+const botonCancion =
+    document.querySelector(".btn-cancion");
+
+const recomendarCancion =
+    document.querySelector(".recomendar-cancion");
+
 
 if (botonCancion && recomendarCancion) {
 
@@ -204,6 +207,7 @@ if (botonCancion && recomendarCancion) {
 
     });
 
+
     recomendarCancion.addEventListener("click", function(event) {
 
         event.stopPropagation();
@@ -211,3 +215,63 @@ if (botonCancion && recomendarCancion) {
     });
 
 }
+/* =========================================
+   CUENTA REGRESIVA XV AÑOS
+   18 DE OCTUBRE DE 2026 - 7:00 PM
+   ========================================= */
+
+const fechaFiesta = new Date("2026-10-18T19:00:00-05:00").getTime();
+
+const contador = setInterval(function () {
+
+    const ahora = new Date().getTime();
+
+    const diferencia = fechaFiesta - ahora;
+
+
+    if (diferencia <= 0) {
+
+        clearInterval(contador);
+
+        document.getElementById("dias").textContent = "00";
+        document.getElementById("horas").textContent = "00";
+        document.getElementById("minutos").textContent = "00";
+        document.getElementById("segundos").textContent = "00";
+
+        document.getElementById("mensajeCuenta").textContent =
+            "💗 ¡Hoy celebramos mis XV años! 💗";
+
+        return;
+    }
+
+
+    const dias = Math.floor(
+        diferencia / (1000 * 60 * 60 * 24)
+    );
+
+    const horas = Math.floor(
+        (diferencia / (1000 * 60 * 60)) % 24
+    );
+
+    const minutos = Math.floor(
+        (diferencia / (1000 * 60)) % 60
+    );
+
+    const segundos = Math.floor(
+        (diferencia / 1000) % 60
+    );
+
+
+    document.getElementById("dias").textContent =
+        String(dias).padStart(2, "0");
+
+    document.getElementById("horas").textContent =
+        String(horas).padStart(2, "0");
+
+    document.getElementById("minutos").textContent =
+        String(minutos).padStart(2, "0");
+
+    document.getElementById("segundos").textContent =
+        String(segundos).padStart(2, "0");
+
+}, 1000);
