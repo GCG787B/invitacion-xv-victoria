@@ -1,0 +1,1505 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #fce7ef;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   CONTENEDOR DEL SOBRE
+   ========================================= */
+
+.sobre-container {
+    text-align: center;
+}
+
+
+/* =========================================
+   SOBRE CERRADO
+   ========================================= */
+
+.sobre {
+    position: relative;
+
+    width: 560px;
+    height: 360px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255,255,255,0.35),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #f3b8ca 0%,
+            #e6a0b9 45%,
+            #d889a4 100%
+        );
+
+    border: 2px solid #c9a05b;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 25px 45px rgba(100,45,70,0.22),
+        0 8px 15px rgba(100,45,70,0.12),
+        inset 0 2px 4px rgba(255,255,255,0.45);
+
+    cursor: pointer;
+
+    /*
+       IMPORTANTE:
+       El contenido no puede salir del sobre
+       mientras está cerrado.
+    */
+    overflow: hidden;
+
+    transition:
+        box-shadow 0.3s ease,
+        background 0.5s ease;
+}
+
+.sobre:hover {
+    box-shadow:
+        0 25px 50px rgba(100,45,70,0.25),
+        0 0 18px rgba(201,160,91,0.25);
+}
+
+
+/* =========================================
+   CARTA
+   ========================================= */
+
+.carta {
+    position: absolute;
+
+    width: 420px;
+    height: 280px;
+
+    left: 50%;
+    bottom: 20px;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #ffffff 0%,
+            #fffafc 55%,
+            #fdf1f6 100%
+        );
+
+    border: 1px solid #d8b06a;
+
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    box-shadow:
+        0 15px 35px rgba(80,40,60,0.20),
+        inset 0 1px 3px rgba(255,255,255,0.9);
+
+    /*
+       La carta queda detrás de la tapa
+       cuando el sobre está cerrado.
+    */
+    z-index: 1;
+
+    transition:
+        transform 1s ease,
+        opacity 0.5s ease;
+}
+
+
+/* =========================================
+   TAPA
+   ========================================= */
+
+.tapa {
+    position: absolute;
+
+    width: 100%;
+    height: 135px;
+
+    top: 0;
+    left: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255,255,255,0.30),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #f2b5c9 0%,
+            #e89ab5 50%,
+            #d77f9f 100%
+        );
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    z-index: 10;
+
+    transition: transform 1s ease;
+
+    transform-origin: top;
+
+    filter: drop-shadow(
+        0 7px 7px rgba(100,45,70,0.18)
+    );
+}
+
+.tapa::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #d4ae67;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    z-index: -1;
+}
+
+.tapa::after {
+    content: "";
+
+    position: absolute;
+
+    top: 3px;
+    left: 3px;
+
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f5bfd0,
+            #e99db7
+        );
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   SELLO
+   ========================================= */
+
+.sello {
+    position: absolute;
+
+    width: 78px;
+    height: 78px;
+
+    left: 50%;
+    top: 120px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #fffdfd 0%,
+            #fff7fa 70%,
+            #f7e7ed 100%
+        );
+
+    border: 2px solid #c9a05b;
+
+    border-radius: 50%;
+
+    z-index: 30;
+
+    box-shadow:
+        0 5px 12px rgba(80,40,60,0.18),
+        inset 0 1px 5px rgba(255,255,255,0.9);
+}
+
+.sello span {
+    color: #c26a8a;
+
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CORAZÓN / ELEMENTOS DEL SOBRE
+   ========================================= */
+
+.corazon {
+    position: absolute;
+
+    width: 62px;
+    height: 62px;
+
+    background: #fff7fa;
+
+    border: 2px solid #c99a5b;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 92px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #c26a8a;
+
+    font-size: 30px;
+
+    z-index: 30;
+}
+
+
+/* =========================================
+   CARTA ABIERTA
+   ========================================= */
+
+.sobre.abierto {
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    /*
+       Permitimos que la carta salga del
+       área original del sobre.
+    */
+    overflow: visible;
+}
+
+.sobre.abierto .tapa,
+.sobre.abierto .sello,
+.sobre.abierto .corazon {
+    display: none;
+}
+
+.sobre.abierto .carta {
+    position: fixed;
+
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+
+    width: auto;
+    height: auto;
+
+    margin: 0;
+
+    transform: none;
+
+    z-index: 9999;
+
+    border-radius: 18px;
+
+    padding: 50px 40px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #ffffff 0%,
+            #fffafc 55%,
+            #fdf1f6 100%
+        );
+
+    border: 1px solid #d8b06a;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* Borde decorativo */
+
+.sobre.abierto .carta::before {
+    content: "";
+
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+
+    border: 1px solid rgba(201,160,91,0.45);
+
+    border-radius: 14px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   CONTENIDO
+   ========================================= */
+
+.decoracion {
+    color: #c9a05b;
+
+    font-size: 22px;
+
+    margin-bottom: 5px;
+}
+
+.pequeno {
+    color: #b27a8f;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+.carta h1 {
+    color: #b86b87;
+
+    font-family: Georgia, serif;
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    letter-spacing: 1px;
+
+    margin: 8px 0;
+
+    line-height: 1;
+
+    text-shadow:
+        0 1px 1px rgba(255,255,255,0.9);
+}
+
+.carta h2 {
+    color: #c9a05b;
+
+    font-family: Georgia, serif;
+
+    font-size: 24px;
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+
+    margin: 8px 0 15px;
+}
+
+.linea {
+    width: 100px;
+
+    height: 1px;
+
+    background: #d8b06a;
+
+    margin: 10px 0 18px;
+}
+
+.texto {
+    max-width: 650px;
+
+    color: #795463;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin: 5px 0 15px;
+}
+
+.invitacion {
+    color: #a87532;
+
+    font-size: 17px;
+
+    font-style: italic;
+
+    margin: 5px 0 20px;
+}
+
+
+/* =========================================
+   FECHA Y HORA
+   ========================================= */
+
+.datos {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 70px;
+
+    margin: 20px 0 15px;
+
+    padding: 20px 45px;
+
+    border-top: 1px solid #d8b06a;
+
+    border-bottom: 1px solid #d8b06a;
+
+    position: relative;
+}
+
+.datos > div {
+    min-width: 100px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.datos span {
+    color: #b86b87;
+
+    font-size: 38px;
+
+    line-height: 1;
+
+    margin-bottom: 7px;
+}
+
+.datos small {
+    color: #9b7180;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   LUGAR
+   ========================================= */
+
+.lugar {
+    color: #8c5d6d;
+
+    font-size: 14px;
+
+    margin: 12px 0 20px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   CARRUSEL
+   ========================================= */
+
+.carrusel {
+    width: min(520px, 80vw);
+
+    margin: 20px auto 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+.carrusel-contenedor {
+    position: relative;
+
+    width: 420px;
+    height: 300px;
+
+    overflow: hidden;
+
+    border: 2px solid #d8b06a;
+
+    border-radius: 18px;
+
+    background: #fff8fb;
+
+    box-shadow:
+        0 12px 30px rgba(80,40,60,0.15);
+}
+
+.foto-carrusel {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+
+    transition: opacity 0.7s ease;
+
+    pointer-events: none;
+}
+
+.foto-carrusel.activa {
+    opacity: 1;
+}
+
+
+/* =========================================
+   FLECHAS
+   ========================================= */
+
+.flecha {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #d8b06a;
+
+    border-radius: 50%;
+
+    background: #fffafa;
+
+    color: #b96886;
+
+    font-family: Georgia, serif;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s ease;
+
+    flex-shrink: 0;
+}
+
+.flecha:hover {
+    background: #fff1f6;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   INDICADORES
+   ========================================= */
+
+.indicadores {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 8px auto 20px;
+}
+
+.punto {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #e8bfd0;
+
+    transition: 0.3s ease;
+}
+
+.punto.activo {
+    width: 11px;
+    height: 11px;
+
+    background: #c56d8d;
+}
+
+
+/* =========================================
+   BOTONES
+   ========================================= */
+
+.botones {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+
+    margin: 15px 0 25px;
+}
+
+.botones button {
+    min-width: 200px;
+
+    height: 50px;
+
+    padding: 0 25px;
+
+    border: 1px solid #d8b06a;
+
+    border-radius: 30px;
+
+    background: #fffafa;
+
+    color: #b76584;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px rgba(80,40,60,0.10);
+
+    transition: all 0.3s ease;
+}
+
+.botones button:hover {
+    transform: translateY(-3px);
+
+    background: #fdf0f5;
+
+    box-shadow:
+        0 12px 25px rgba(80,40,60,0.16);
+}
+
+
+/* =========================================
+   CONFIRMACIÓN
+   ========================================= */
+
+.confirmacion {
+    display: none;
+
+    width: min(500px, 90%);
+
+    margin: 10px auto 30px;
+
+    padding: 30px 35px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #ffffff 0%,
+            #fffafc 60%,
+            #fdf1f6 100%
+        );
+
+    border: 1px solid #d8b06a;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 35px rgba(80,40,60,0.14);
+
+    position: relative;
+
+    z-index: 20;
+}
+
+.confirmacion.mostrar {
+    display: block;
+}
+
+.confirmacion h3 {
+    margin: 0 0 12px;
+
+    color: #bd6688;
+
+    font-size: 30px;
+}
+
+.confirmacion p {
+    margin: 0 0 22px;
+
+    color: #795766;
+
+    line-height: 1.5;
+
+    font-size: 16px;
+}
+
+.confirmacion input {
+    display: block;
+
+    width: 100%;
+
+    height: 50px;
+
+    margin: 12px 0;
+
+    padding: 0 20px;
+
+    border: 1px solid #d8b06a;
+
+    border-radius: 28px;
+
+    background: white;
+
+    color: #6f4b59;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.confirmacion input:focus {
+    border-color: #c87898;
+
+    box-shadow:
+        0 0 0 3px rgba(200,120,152,0.12);
+}
+
+.confirmacion .btn-whatsapp {
+    width: 100%;
+
+    height: 50px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 28px;
+
+    background: #d8759a;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.confirmacion .btn-whatsapp:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   DECORACIÓN CARTA ABIERTA
+   ========================================= */
+
+.sobre.abierto .carta::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 35px;
+    left: 45px;
+
+    font-size: 28px;
+
+    color: #c9a05b;
+}
+
+.sobre.abierto .carta .decoracion::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 35px;
+    right: 45px;
+
+    font-size: 22px;
+
+    color: #c9a05b;
+}
+
+.sobre.abierto .carta .lugar::after {
+    content: "✦";
+
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 18px;
+
+    color: #c9a05b;
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        align-items: flex-start;
+
+        padding: 30px 10px;
+    }
+
+    .sobre {
+        width: 92vw;
+        max-width: 560px;
+
+        height: 300px;
+    }
+
+    .carta {
+        width: 75vw;
+        max-width: 420px;
+
+        height: 240px;
+    }
+
+    .carrusel {
+        width: 94vw;
+
+        gap: 6px;
+    }
+
+    .carrusel-contenedor {
+        width: 75vw;
+
+        height: 300px;
+    }
+
+    .flecha {
+        width: 35px;
+        height: 35px;
+
+        font-size: 25px;
+    }
+
+    .botones {
+        flex-direction: column;
+    }
+
+    .botones button {
+        width: min(90%, 300px);
+    }
+
+    .datos {
+        gap: 30px;
+
+        padding: 18px 20px;
+    }
+
+    .sobre.abierto .carta {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+
+        padding: 40px 20px;
+    }
+}
+
+/* =========================================
+   OCULTAR CARTA MIENTRAS EL SOBRE ESTÁ CERRADO
+   ========================================= */
+
+.sobre:not(.abierto) .carta {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* =========================================
+   MOSTRAR CARTA CUANDO SE ABRE
+   ========================================= */
+
+.sobre.abierto .carta {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 9999;
+}
+
+/* =========================================
+   CORRECCIÓN: CARTA ABIERTA SIN CORTAR ARRIBA
+   ========================================= */
+
+.sobre.abierto .carta {
+    justify-content: flex-start !important;
+
+    padding-top: 55px !important;
+    padding-bottom: 50px !important;
+
+    overflow-y: auto !important;
+}
+
+
+/* =========================================
+   DISEÑO ELEGANTE - CELULAR Y COMPUTADORA
+   ========================================= */
+
+.sobre.abierto .carta {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,0.98) 0%,
+            #fffafc 50%,
+            #fdf1f6 100%
+        ) !important;
+
+    box-shadow:
+        0 20px 50px rgba(80, 40, 60, 0.16),
+        inset 0 0 30px rgba(255,255,255,0.8) !important;
+}
+
+
+/* Carrusel más elegante */
+
+.sobre.abierto .carrusel {
+    width: min(620px, 90%);
+    margin: 30px auto 5px;
+    gap: 18px;
+}
+
+.sobre.abierto .carrusel-contenedor {
+    width: min(460px, 70vw);
+    height: min(330px, 48vw);
+
+    border: 1px solid #d8b06a;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffefe,
+            #fff7fa
+        );
+
+    box-shadow:
+        0 15px 35px rgba(80, 40, 60, 0.14),
+        0 0 0 5px rgba(216,176,106,0.06);
+}
+
+
+/* Flechas elegantes */
+
+.sobre.abierto .flecha {
+    width: 44px;
+    height: 44px;
+
+    background: rgba(255,250,252,0.95);
+
+    border: 1px solid #d8b06a;
+
+    color: #b96886;
+
+    box-shadow:
+        0 6px 15px rgba(80,40,60,0.12);
+}
+
+
+/* Indicadores */
+
+.sobre.abierto .indicadores {
+    margin: 10px auto 20px;
+}
+
+.sobre.abierto .punto {
+    background: #e4c3cf;
+}
+
+.sobre.abierto .punto.activo {
+    background: #c56d8d;
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .sobre.abierto .carta {
+        top: 10px !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+
+        padding: 45px 15px 40px !important;
+
+        border-radius: 16px !important;
+    }
+
+    .sobre.abierto .carta h1 {
+        font-size: clamp(48px, 15vw, 70px);
+        letter-spacing: 1px;
+    }
+
+    .sobre.abierto .carta h2 {
+        font-size: 23px;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+    .sobre.abierto .carta .texto {
+        max-width: 90%;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .sobre.abierto .carta .invitacion {
+        max-width: 90%;
+        font-size: 15px;
+    }
+
+    .sobre.abierto .carrusel {
+        width: 100%;
+        gap: 7px;
+        margin-top: 20px;
+    }
+
+    .sobre.abierto .carrusel-contenedor {
+        width: calc(100vw - 105px);
+        height: 240px;
+        max-width: 380px;
+    }
+
+    .sobre.abierto .flecha {
+        flex-shrink: 0;
+
+        width: 36px;
+        height: 36px;
+
+        font-size: 24px;
+    }
+
+    .sobre.abierto .datos {
+        width: 90%;
+        gap: 25px;
+
+        padding: 18px 10px;
+        margin-top: 20px;
+    }
+
+    .sobre.abierto .datos > div {
+        min-width: 85px;
+    }
+
+    .sobre.abierto .datos span {
+        font-size: 30px;
+    }
+
+    .sobre.abierto .datos small {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .sobre.abierto .lugar {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .sobre.abierto .botones {
+        flex-direction: column;
+        gap: 12px;
+        width: 90%;
+    }
+
+    .sobre.abierto .botones button {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/* =========================================
+   MEJORA ELEGANTE
+   ========================================= */
+
+.sobre.abierto .carta {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #ffffff 0%,
+            #fffafc 50%,
+            #fdf0f5 100%
+        ) !important;
+
+    box-shadow:
+        0 25px 60px rgba(80, 40, 60, 0.18),
+        inset 0 0 35px rgba(255,255,255,0.8) !important;
+}
+
+
+/* Nombre Victoria */
+
+.sobre.abierto .carta h1 {
+    font-size: 65px;
+
+    color: #b86183;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 2px 3px rgba(255,255,255,0.9);
+}
+
+
+/* XV Años */
+
+.sobre.abierto .carta h2 {
+    color: #bd9550;
+
+    letter-spacing: 4px;
+
+    font-size: 23px;
+}
+
+
+/* Carrusel */
+
+.sobre.abierto .carrusel-contenedor {
+    border: 1px solid #d5ad69;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 35px rgba(80,40,60,0.15),
+        0 0 0 5px rgba(216,176,106,0.06);
+}
+
+
+/* Botones */
+
+.sobre.abierto .botones button {
+    background: #fffafd;
+
+    border: 1px solid #d5ad69;
+
+    color: #ad5e7d;
+
+    box-shadow:
+        0 8px 20px rgba(80,40,60,0.10);
+}
+
+.sobre.abierto .botones button:hover {
+    background: #fff2f7;
+
+    transform: translateY(-3px);
+}
+
+
+/* Fecha */
+
+.sobre.abierto .datos {
+    border-color: #d5ad69;
+}
+
+.sobre.abierto .datos span {
+    color: #b86183;
+}
+
+
+/* Lugar */
+
+.sobre.abierto .lugar {
+    color: #8c5d6d;
+
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   RECOMENDAR CANCIÓN
+   ========================================= */
+
+.btn-cancion {
+    min-width: 220px;
+
+    height: 50px;
+
+    padding: 0 25px;
+
+    border: 1px solid #d8b06a;
+
+    border-radius: 30px;
+
+    background: #fffafa;
+
+    color: #b76584;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px rgba(80,40,60,0.10);
+
+    transition: all 0.3s ease;
+}
+
+.btn-cancion:hover {
+    transform: translateY(-3px);
+
+    background: #fdf0f5;
+
+    box-shadow:
+        0 12px 25px rgba(80,40,60,0.16);
+}
+
+
+/* Ventana */
+
+.recomendar-cancion {
+    display: none;
+
+    width: min(500px, 90%);
+
+    margin: 10px auto 30px;
+
+    padding: 30px 35px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #ffffff 0%,
+            #fffafc 60%,
+            #fdf1f6 100%
+        );
+
+    border: 1px solid #d8b06a;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 35px rgba(80,40,60,0.14);
+
+    animation:
+        aparecerCancion 0.4s ease;
+}
+
+.recomendar-cancion.mostrar {
+    display: block;
+}
+
+.recomendar-cancion h3 {
+    margin-bottom: 12px;
+
+    color: #bd6688;
+
+    font-size: 28px;
+
+    font-weight: normal;
+}
+
+.recomendar-cancion p {
+    margin-bottom: 20px;
+
+    color: #795766;
+
+    line-height: 1.5;
+
+    font-size: 15px;
+}
+
+.recomendar-cancion input {
+    display: block;
+
+    width: 100%;
+
+    height: 50px;
+
+    margin: 12px 0;
+
+    padding: 0 20px;
+
+    border: 1px solid #d8b06a;
+
+    border-radius: 28px;
+
+    background: white;
+
+    color: #6f4b59;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.recomendar-cancion input:focus {
+    border-color: #c87898;
+
+    box-shadow:
+        0 0 0 3px rgba(200,120,152,0.12);
+}
+
+.btn-enviar-cancion {
+    width: 100%;
+
+    height: 50px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 28px;
+
+    background: #d8759a;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.btn-enviar-cancion:hover {
+    transform: translateY(-2px);
+
+    background: #c9688d;
+}
+
+@keyframes aparecerCancion {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* Celular */
+
+@media (max-width: 600px) {
+
+    .btn-cancion {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+    .recomendar-cancion {
+        width: 90%;
+
+        padding: 25px 20px;
+    }
+}
+
+.recomendar-cancion {
+    display: none;
+}
+
+.recomendar-cancion.mostrar {
+    display: block;
+}
+
+.recomendar-cancion {
+    display: none;
+}
+
+.recomendar-cancion.mostrar {
+    display: block;
+}
