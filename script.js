@@ -203,7 +203,14 @@ if (botonCancion && recomendarCancion) {
 
         event.stopPropagation();
 
+        // Mostrar/ocultar el menú
         recomendarCancion.classList.toggle("mostrar");
+
+        // Abrir la playlist de Spotify
+        window.open(
+            "https://open.spotify.com/playlist/2QyLEIYYYPraDQ0H9CTETZ?si=ad344686a52d4372&pt=e5adcaa467ecececaaecfe5acdbab9ae",
+            "_blank"
+        );
 
     });
 
