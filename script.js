@@ -108,7 +108,7 @@ botonWhatsapp.addEventListener("click", function (event) {
         "Acompañante: " + encodeURIComponent(acompananteTexto);
 
     window.open(
-        "https://wa.me/573184915908?text=" + mensaje,
+        "https://wa.me/573506587702?text=" + mensaje,
         "_blank"
     );
 });
